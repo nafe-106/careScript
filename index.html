@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareScriptRx — AI-Powered Prescription Generation</title>
+  <link rel="icon" href="assets/img/plexus.png">
+
+  <!-- Fonts - preconnect first for speed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS CSS - local -->
+  <link rel="stylesheet" href="assets/css/aos.css">
+
+  <!-- Bootstrap Icons - local -->
+  <link href="assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+  <!-- Meeting Request Modal -->
+  <div class="meeting-modal-overlay" id="meetingModal">
+    <div class="meeting-modal">
+
+      <!-- HEADER -->
+      <div class="meeting-modal-header" id="modalHeader">
+        <button class="meeting-modal-close" id="closeModal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <h3 class="meeting-modal-title">Book a Live Demo</h3>
+        <p class="meeting-modal-sub">Fill out the short form below and we'll review your requirements and schedule a
+          personalized demo
+          within 24 hours.</p>
+      </div>
+
+      <!-- FORM BODY -->
+      <div class="meeting-modal-body" id="modalBody">
+        <div class="meeting-modal-frame">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSe6IBGquy1wQWKsO77w5-C5rfg6FX_zl5evrlnhBx6Xf9jbbw/viewform?embedded=true"
+            width="100%" height="850" frameborder="0">
+            Loading…
+          </iframe>
+        </div>
+      </div>
+
+      <!-- SUCCESS MESSAGE -->
+      <div class="meeting-modal-success" id="modalSuccess">
+        <div class="success-icon">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <h3>Request Submitted!</h3>
+        <p>Thank you! Your meeting request is <strong>in progress</strong>. I'll get back to you within <strong>24
+            hours</strong>.</p>
+        <button id="successClose">Close</button>
+      </div>
+
+    </div>
+  </div>
+  <header class="header" id="header">
+    <a href="#" class="logo">
+      <img src="./assets/img/plexus.png" alt="Plexus">
+    </a>
+
+    <nav class="navbar">
+      <a href="#home" id="nava" class="active">Home</a>
+      <a href="#features" id="nava">Features</a>
+      <a href="#pricing" id="nava">Pricing</a>
+      <a href="#contact" id="nava">Contact</a>
+    </nav>
+
+    <div class="nav-btns">
+      <a class="jnbtn" href="https://clinic-connect-alpha.vercel.app/" target="_blank">
+        <span>See the Demo</span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+      <a class="jnbtn jnbtn-order" href="#pricing">
+        <i class="bi bi-cart-fill"></i>
+        <span>Order Now</span>
+      </a>
+    </div>
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+  </header>
+  <!-- Mobile nav -->
+  <div class="mobile-nav">
+    <a href="#home" id="nava">Home</a>
+    <a href="#features" id="nava">Features</a>
+    <a href="#pricing" id="nava">Pricing</a>
+    <a href="#contact" id="nava">Contact</a>
+    <a class="jnbtn" id="openModalMobile" href="#">
+      <span>Request a Demo</span>
+      <i class="bi bi-arrow-right"></i>
+    </a>
+    <a class="jnbtn jnbtn-order" href="#pricing" style="margin-top:6px;">
+      <i class="bi bi-cart-fill"></i>
+      <span>Order Now</span>
+    </a>
+  </div>
+  <!-- HOME -->
+  <section class="home" id="home">
+
+    <!-- Background blobs -->
+    <div class="home-blob home-blob--1"></div>
+    <div class="home-blob home-blob--2"></div>
+    <div class="home-blob home-blob--3"></div>
+
+    <div class="home-inner">
+
+      <!-- LEFT: Text -->
+      <div class="home-text">
+
+        <h1 class="home-heading">
+          <span class="home-heading--name">CareScriptRx</span>
+          <span class="home-heading--craft"><span class="typed-wrap"><span class="multiple-text1"></span></span></span>
+        </h1>
+
+        <p class="home-desc">
+          <span class="pen-name-tag ">✒ Plexus</span>
+          A complete AI-powered healthcare platform for <span class="home-link">students, doctors, clinics, and healthcare setups in Bangladesh.</span> Generate <strong>prescriptions within seconds using AI assistance.</strong> Fully digital & paperless workflow with <strong>professional printable prescriptions and clinic branding.</strong> Access 11,500+ medicine database with Bengali-friendly experience for local healthcare workflow.
+          <br><br>
+          <em class="home-quote">"Faster Chambers. Better Patient Experience."</em>
+        </p>
+
+        <div class="home-stats">
+          <div class="home-stat">
+            <span class="stat-num">11,500+</span>
+            <span class="stat-label">Medicines</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="home-stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Paperless</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="home-stat">
+            <span class="stat-num">AI</span>
+            <span class="stat-label">Powered</span>
+          </div>
+        </div>
+
+        <div class="home-actions">
+          <a href="#contact" class="home-cta-primary">Get Started <i class="bi bi-arrow-right"></i></a>
+          <a href="#features" class="home-cta-secondary">Learn More</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Image -->
+      <div class="home-visual">
+        <div class="home-img-wrap">
+          <div class="home-img-ring home-img-ring--outer"></div>
+          <div class="home-img-ring home-img-ring--inner"></div>
+          <img src="assets/img/heroimg1.png" alt="CareScriptRx" class="home-img">
+          <div class="home-img-badge">
+            <i class="bi bi-shield-fill-check"></i>
+            <span>AI-Powered Prescription</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- FEATURES -->
+  <section class="procedure" id="features">
+    <div class="section-title">
+      <h2>Features</h2>
+      <p>Everything You Need to Run Your Clinic Smartly</p>
+    </div>
+
+    <div class="proc-timeline">
+
+      <div class="proc-step">
+        <div class="proc-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-cpu-fill"></i></div>
+          <div class="proc-body">
+            <h3>AI Prescription Assistant</h3>
+            <p>Generate prescriptions within seconds using AI assistance. Smart suggestions, dosage recommendations, and Bengali-friendly support built for Bangladeshi healthcare workflow.</p>
+          </div>
+        </div>
+        <div class="proc-center">
+          <div class="proc-num">01</div>
+        </div>
+        <div class="proc-empty"></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-empty"></div>
+        <div class="proc-center">
+          <div class="proc-num">02</div>
+        </div>
+        <div class="proc-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-printer-fill"></i></div>
+          <div class="proc-body">
+            <h3>Professional Digital Prescriptions</h3>
+            <p>Fully digital & paperless workflow with professional printable prescriptions. Add your clinic branding, logo, and customize templates for a polished patient experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-search-heart-fill"></i></div>
+          <div class="proc-body">
+            <h3>Smart Medicine Search</h3>
+            <p>Access 11,500+ medicine database with instant search. Find generic and brand names, dosages, and alternatives quickly during patient consultations.</p>
+          </div>
+        </div>
+        <div class="proc-center">
+          <div class="proc-num">03</div>
+        </div>
+        <div class="proc-empty"></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-empty"></div>
+        <div class="proc-center">
+          <div class="proc-num">04</div>
+        </div>
+        <div class="proc-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-palette-fill"></i></div>
+          <div class="proc-body">
+            <h3>Custom Prescription Templates</h3>
+            <p>Create and save unlimited prescription templates. Choose from pre-designed layouts or build your own to match your clinic's branding and specialty requirements.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-phone-fill"></i></div>
+          <div class="proc-body">
+            <h3>Mobile & Desktop Support</h3>
+            <p>Mobile-first system built for chamber workflow. Access CareScriptRx on any device — phone, tablet, or desktop — with full functionality everywhere.</p>
+          </div>
+        </div>
+        <div class="proc-center">
+          <div class="proc-num">05</div>
+        </div>
+        <div class="proc-empty"></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-empty"></div>
+        <div class="proc-center">
+          <div class="proc-num">06</div>
+        </div>
+        <div class="proc-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-file-pdf-fill"></i></div>
+          <div class="proc-body">
+            <h3>Prescription Export & Direct Printing</h3>
+            <p>Export prescriptions as professional PDFs or print directly. Share digital copies with patients via email or messaging instantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-translate"></i></div>
+          <div class="proc-body">
+            <h3>Bengali-Friendly Workflow</h3>
+            <p>Full Bengali language support for prescription and interface. Built specifically for the Bangladeshi healthcare ecosystem with local medicine names and terminology.</p>
+          </div>
+        </div>
+        <div class="proc-center">
+          <div class="proc-num">07</div>
+        </div>
+        <div class="proc-empty"></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-empty"></div>
+        <div class="proc-center">
+          <div class="proc-num">08</div>
+        </div>
+        <div class="proc-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-mortarboard-fill"></i></div>
+          <div class="proc-body">
+            <h3>Student Sandbox Mode</h3>
+            <p>Free practice environment for medical students. Learn to write digital prescriptions, explore the medicine database, and build confidence before clinical practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-card" data-aos="fade-left" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-shield-lock-fill"></i></div>
+          <div class="proc-body">
+            <h3>Secure & Scalable Backend</h3>
+            <p>Role-based access with secure cloud backend powered by Supabase. Built to scale from solo practice to multi-clinic healthcare setups with real-time infrastructure.</p>
+          </div>
+        </div>
+        <div class="proc-center">
+          <div class="proc-num">09</div>
+        </div>
+        <div class="proc-empty"></div>
+      </div>
+
+      <div class="proc-step">
+        <div class="proc-empty"></div>
+        <div class="proc-center">
+          <div class="proc-num">10</div>
+        </div>
+        <div class="proc-card" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
+          <div class="proc-icon"><i class="bi bi-headset"></i></div>
+          <div class="proc-body">
+            <h3>24/7 Dedicated Support</h3>
+            <p>Round-the-clock assistance for uninterrupted clinic operations. Get help whenever you need it from our dedicated support team.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PRICING SECTION -->
+  <section class="pricing" id="pricing">
+    <div class="section-title">
+      <h2>Pricing</h2>
+      <p>Choose Your Plan</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Student Plan -->
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+        <div class="pricing-top">
+          <h3>🎓 Student Plan</h3>
+          <div class="pricing-words">Practice prescriptions and learn digitally</div>
+          <div class="pricing-price">FREE <span class="pricing-period">/ month</span></div>
+        </div>
+
+        <ul class="pricing-features">
+          <li><i class="bi bi-check-circle-fill"></i> AI Prescription Practice Mode</li>
+          <li><i class="bi bi-check-circle-fill"></i> Access to 11,500+ Medicine DB</li>
+          <li><i class="bi bi-check-circle-fill"></i> Custom Prescription Templates</li>
+          <li><i class="bi bi-check-circle-fill"></i> Prescription Export & Printing <span style="font-size:11px;opacity:0.7;">(watermark included for security)</span></li>
+          <li><i class="bi bi-check-circle-fill"></i> Mobile & Desktop Access</li>
+          <li><i class="bi bi-check-circle-fill"></i> 🧑‍💬 Community Support</li>
+        </ul>
+
+        <a class="pricing-btn" href="#contact">Get Started Free</a>
+      </div>
+
+      <!-- Doctor Plan -->
+      <div class="pricing-card pricing-card--highlight" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+
+        <div class="pricing-badge">⭐ Most Popular</div>
+
+        <div class="pricing-top">
+          <h3>👨‍⚕️ Doctor Plan</h3>
+          <div class="pricing-words">
+            Full AI prescription & clinic workflow access
+          </div>
+
+          <div class="pricing-price">
+            ৳2,000 <span class="pricing-period">/ month</span>
+          </div>
+        </div>
+
+        <ul class="pricing-features">
+          <li><i class="bi bi-check-circle-fill"></i> AI-Powered Prescription Generation</li>
+          <li><i class="bi bi-check-circle-fill"></i> Unlimited Prescriptions</li>
+          <li><i class="bi bi-check-circle-fill"></i> 11,500+ Medicine Database</li>
+          <li><i class="bi bi-check-circle-fill"></i> Custom Prescription Templates</li>
+          <li><i class="bi bi-check-circle-fill"></i> Clinic Branding on Prescriptions</li>
+          <li><i class="bi bi-check-circle-fill"></i> Prescription Export & Direct Printing</li>
+          <li><i class="bi bi-check-circle-fill"></i> Mobile & Desktop Support</li>
+          <li><i class="bi bi-check-circle-fill"></i> Bengali-Friendly Workflow</li>
+          <li><i class="bi bi-check-circle-fill"></i> 🧑‍💬 Priority Support</li>
+        </ul>
+
+        <a class="pricing-btn pricing-btn--white" href="#contact">Subscribe Now</a>
+      </div>
+
+    </div>
+  </section>
+  <!--PRICING SECTION -->
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+
+      <div class="contact-left" data-aos="fade-right" data-aos-duration="800">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Get In Touch</p>
+        </div>
+
+        <p class="contact-subtext">
+          Ready to transform your practice with AI-powered prescriptions? Have questions about CareScriptRx?
+          Fill out the form or reach out directly. We'll get back to you within 24 hours.
+        </p>
+
+        <div class="contact-info-cards">
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="bi bi-envelope-fill"></i></div>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <a href="mailto:nafeprodhan@gmail.com" class="contact-info-value">nafeprodhan@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="bi bi-telephone-fill"></i></div>
+            <div>
+              <span class="contact-info-label">Phone</span>
+              <a href="tel:+8801887433971" class="contact-info-value">+880 1887433971</a>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <div>
+              <span class="contact-info-label">Location</span>
+              <span class="contact-info-value">Bangladesh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="https://www.facebook.com/nafeprodhan" class="contact-social-btn" title="Facebook"><i
+              class="bx bxl-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/nafe-ibne-dalower/" class="contact-social-btn" title="LinkedIn"><i
+              class="bx bxl-linkedin"></i></a>
+          <a href="https://mail.google.com/mail/?view=cm&to=nafeprodhan@gmail.com" target="_blank"
+            class="contact-social-btn" title="Gmail"><i class="bx bxl-gmail"></i></a>
+          <a href="https://github.com/Nafe-Ibne-Dalower/" class="contact-social-btn" title="GitHub"><i
+              class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-right" data-aos="fade-left" data-aos-duration="800">
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+
+          <!-- Web3Forms required -->
+          <input type="hidden" name="access_key" value="cd476e56-12ca-413b-b6dd-c46367461278">
+          <input type="hidden" name="subject" value="New Contact — CareScriptRx">
+          <input type="hidden" name="from_name" value="CareScriptRx Contact Form">
+          <input type="checkbox" name="botcheck" style="display:none">
+          <input type="hidden" name="redirect" value="false">
+          <h3 class="contact-form-title">Send an Order</h3>
+
+          <div class="contact-form-row">
+            <div class="contact-field">
+              <label>Your Name</label>
+              <input type="text" name="name" placeholder="John Doe" required autocomplete="off">
+            </div>
+            <div class="contact-field">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="john@email.com" required autocomplete="off">
+            </div>
+          </div>
+
+          <div class="contact-field">
+            <label>Clinic Name</label>
+            <input type="text" name="clinic_name" placeholder="Your clinic name..." autocomplete="off">
+          </div>
+
+          <div class="contact-field">
+            <label>Interested Plan</label>
+            <select name="plan" autocomplete="off" required>
+              <option value="" selected disabled>Select a plan...</option>
+              <option value="Student">🎓 Student Plan (Free)</option>
+              <option value="Doctor">👨‍⚕️ Doctor Plan (2000 BDT/month)</option>
+            </select>
+          </div>
+
+          <div class="contact-field">
+            <label>Message</label>
+            <textarea name="message" placeholder="Tell us about your clinic and requirements..." required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit" id="submitBtn">
+            <span>Send Order</span>
+            <i class="bi bi-send-fill"></i>
+          </button>
+
+          <!-- Success / Error messages -->
+          <p class="form-success" id="formSuccess"
+            style="display:none; color:#00b894; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; margin-top:12px;">
+            ✓ Message sent successfully! We'll get back to you within 24 hours.
+          </p>
+          <p class="form-error" id="formError"
+            style="display:none; color:#e74c3c; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; margin-top:12px;">
+            ✗ Something went wrong. Please try again.
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="./assets/img/plexus.png" alt="CareScriptRx">
+          <span>CareScriptRx</span>
+        </div>
+        <p class="footer-tagline">
+          AI-Powered Prescription Generation. Faster Chambers. Better Patient Experience.
+          Generate prescriptions within seconds using AI assistance with 11,500+ medicine database.
+        </p>
+        <em class="footer-quote">"Faster Chambers. Better Patient Experience."</em>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-services">
+        <h4>Features</h4>
+        <span>AI Prescription Assistant</span>
+        <span>Digital Prescriptions</span>
+        <span>Smart Medicine Search</span>
+        <span>Custom Templates</span>
+        <span>Prescription Export & Printing</span>
+        <span>Bengali-Friendly Workflow</span>
+        <span>Student Sandbox Mode</span>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Get In Touch</h4>
+        <a href="https://mail.google.com/mail/?view=cm&to=nafeprodhan@gmail.com" target="_blank"><i
+            class="bi bi-envelope-fill"></i> nafeprodhan@gmail.com</a>
+        <a href="tel:+8801887433971"><i class="bi bi-telephone-fill"></i> +880 1887433971</a>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/nafeprodhan" title="Facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.linkedin.com/in/nafe-ibne-dalower/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://mail.google.com/mail/?view=cm&to=nafeprodhan@gmail.com" target="_blank">
+            <i class="bx bxl-gmail"></i>
+          </a>
+          <a href="https://github.com/Nafe-Ibne-Dalower/" title="GitHub"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 <strong>CareScriptRx</strong> — Developed by <a href="https://nafeplexus.vercel.app/"
+          target="_blank">Nafe Ibne Dalower • Plexus</a>. All Rights Reserved.</span>
+      <span>Call Now: <a href="tel:+8801887433971">01887433971</a></span>
+    </div>
+  </footer>
+
+  <!-- Local JS files - NO CDN -->
+  <script src="assets/js/typed.umd.js"></script>
+  <script src="assets/js/aos.js"></script>
+  <script src="main.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
